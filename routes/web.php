@@ -15,8 +15,22 @@ Route::get('/', function () {
 
 //Route::post('/finnformati', 'HomeController@formati');
 
+
+
+
+Route::group(['middleware' => ['admin']], function () {
+
 Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 Route::get('/shows-conf', 'ShowController@conf')->name('shows.conf');
+Route::get('/locations-conf', 'LocationController@conf')->name('locations.conf');
+Route::get('/representations-conf/{show}', 'RepresentationController@conf')->name('representations.conf');
+
+});
+
+
+Route::group(['middleware' => ['user']], function () {
+
+});
 
 // les routes des users
 /*

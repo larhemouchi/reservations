@@ -7,14 +7,30 @@ use Illuminate\Http\Request;
 
 use App\Representation;
 
+use App\Show;
+
 use App\Http\Requests\representationRequest;
 
 class RepresentationController extends Controller
 {
         public function __construct(){
 
-          $this->middleware('auth');
+          //$this->middleware('auth');
         }
+
+        //public function conf(Show $show){
+        public function conf($show){
+
+            //walakin blati ana 3andi la table show khawiya ghanakhd ha lid bo7do
+            //oui
+          
+            return view('back.representations.confirm', compact('show'));
+        }
+
+
+
+
+
      //pour lister les artists
    public function index(){
 

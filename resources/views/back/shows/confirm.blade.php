@@ -38,6 +38,7 @@ The Main Configuration Of the web application
                 <th>name</th>
                 <th>Description</th>
                 <th>Location</th>
+                <th>price</th>
             </tr>
         </thead>
     </table>
@@ -360,8 +361,11 @@ Content-Type: application/json
             { data: 'EventId'},
             { data: 'Name'},
             { data: 'Description'},
-            //"VenueId": 85,
-            { data: 'VenueId'}
+            //"VenueId": 85,//Location Id
+            { data: 'VenueId'},
+            //Mochkila khra bach njabdo limage khasa ndakhlo l array nkhaliwha mn ba3d
+            // bookable hankhaliwha dima true 7it ma7do t3lan 3lih ya3ni bbokable
+            { data: 'OfferPrice'}
 
 
         ]

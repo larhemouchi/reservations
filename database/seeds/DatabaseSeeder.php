@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             'firstname' => 'admin',
             'lastname' => 'admin',
             'login' => 'admin',
-            'password' => bcrypt('123456789'),
+            'password' => bcrypt('123456'),
             'email' => 'admin@gmail.com',
             'langue' => 'english',
             'role_id' => 1
@@ -44,11 +44,11 @@ class DatabaseSeeder extends Seeder
 
         DB::table('users')->insert([
             'id' => 2,
-            'firstname' => 'admin',
-            'lastname' => 'admin',
-            'login' => 'admin',
-            'password' => bcrypt('123456789'),
-            'email' => 'admin@gmail.com',
+            'firstname' => 'user',
+            'lastname' => 'user',
+            'login' => 'user',
+            'password' => bcrypt('123456'),
+            'email' => 'user@gmail.com',
             'langue' => 'english',
             'role_id' => 2
 

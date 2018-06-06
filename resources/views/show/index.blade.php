@@ -22,7 +22,7 @@
     	<div class='panel panel-primary' >
       <img src="{{asset('storage/'.$show->poster_url)}}"class='img-responsive center-block' width='330' height='300'alt="picture">
       <div class="caption">
-        <h3>{{$show->title}}</h3>
+        <h3>Title: {{$show->title}}</h3>
        
         <p><center><form action="{{url('shows/'.$show->id)}}" method="post"
 				onsubmit="return confirm('Etes vous sur de supprimer ?');">

@@ -45,6 +45,7 @@ if($request->hasFile('poster_url')){
     $representation->show_id=$show->id;
     $representation->when=$request->input('when');
     $representation->location_id=$request->input('location_id');
+    
     $representation->save();
     
     return redirect('shows');

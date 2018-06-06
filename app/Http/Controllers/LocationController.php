@@ -15,8 +15,15 @@ class LocationController extends Controller
 
   public function __construct(){
 
-          $this->middleware('auth');
+          //$this->middleware('auth');
         }
+
+  public function conf(){
+      return view('back.locations.confirm');
+  }
+
+
+
      //pour lister les artists
    public function index(){
 
