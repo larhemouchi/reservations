@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -21,17 +21,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        return view('home');
-    }
-
-    public function formati(Request $Request)
-    {
-        $id = $Request->id; 
-        //lmohim akhay hanbdaw ninsiriw f la table 3adi 
- 
         return view('back.index');
     }
+
 
 }

@@ -15,12 +15,12 @@ class CreateLocationsTable extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('slug')->nullable();
-            $table->string('designation')->nullable();
-            $table->string('adresse')->nullable();
+            $table->string('slug')->default('no-slug');
+            $table->text('designation')->nullable();
+            $table->string('address')->nullable();
             $table->integer('locality_id')->unsigned()->index();
             $table->foreign('locality_id')->references('id')->on('localities');
-            $table->string('website');
+            $table->string('website')->nullable();
             $table->string('phone')->nullable();
             $table->timestamps();
         });

@@ -29,10 +29,21 @@
         </div>
 
             <div class="form-group">
-            <label for="">When :</label>       
-        <input type="date" name="when" class="form-control" value="{{$representation->when}}">
-     @if($errors->get('when'))
-            @foreach($errors->get('when') as $message)
+            <label for="">When_date :</label>       
+        <input type="date" name="when_date" class="form-control" value="{{$representation->when_date}}">
+     @if($errors->get('when_date'))
+            @foreach($errors->get('when_date') as $message)
+
+             {{$message}}
+            @endforeach
+
+            @endif
+        </div>
+        <div class="form-group">
+            <label for="">When_time :</label>       
+        <input type="time" name="when_time" class="form-control" value="{{$representation->when_time}}">
+     @if($errors->get('when_time'))
+            @foreach($errors->get('when_time') as $message)
 
              {{$message}}
             @endforeach

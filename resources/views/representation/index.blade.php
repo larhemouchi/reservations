@@ -27,9 +27,9 @@
 <body>
 	@foreach($representations as $representation)
 	<tr>
-		<td>{{$representation->show_id}}</td>
+		<td>{{$representation->show->title}}</td>
 		<td>{{$representation->when}}</td>
-		<td>{{$representation->location_id}}</td>
+		<td>{{$representation->location->locality->locality}}</td>
 				<td>
 			
 			<form action="{{url('representations/'.$representation->id)}}" method="post"

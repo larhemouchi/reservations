@@ -11,18 +11,31 @@
 */
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('index');
 
 //Route::post('/finnformati', 'HomeController@formati');
 
-
+Auth::routes();
+Route::get('/accueil', 'AccueilController@index')->name('accueil');
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::group(['middleware' => ['admin']], function () {
 
+Route::get('/test-api	', 'ShowController@testapi')->name('test.api');
+
+Route::get('/dashboard	', 'DashboardController@index')->name('dashboard.index');
+
+
 Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 Route::get('/shows-conf', 'ShowController@conf')->name('shows.conf');
+Route::post('/shows-post', 'ShowController@post')->name('shows.post');
+Route::delete('/shows-delete', 'ShowController@delete')->name('shows.delete');
+
+Route::get('/shows_dashboard', 'ShowController@fetch')->name('shows.list_repre_conf');
 Route::get('/locations-conf', 'LocationController@conf')->name('locations.conf');
+Route::post('/locations-post/{id}', 'LocationController@post')->name('locations.post');
+Route::delete('/locations-delete/{id}', 'LocationController@delete')->name('locations.delete');
 Route::get('/representations-conf/{show}', 'RepresentationController@conf')->name('representations.conf');
 
 });
@@ -77,13 +90,13 @@ Route::put('artiste_types/{id}', 'Artiste_typeController@update');
 Route::delete('artiste_types/{id}', 'Artiste_typeController@destroy');
 
 //les routes de localities
-Route::get('localities', 'LocalitieController@index');
+/*Route::get('localities', 'LocalitieController@index');
 Route::get('localities/create', 'LocalitieController@create');
 Route::post('localities', 'LocalitieController@store');
 Route::get('localities/{id}/edit', 'LocalitieController@edit');
 Route::put('localities/{id}', 'LocalitieController@update');
-Route::delete('localities/{id}', 'LocalitieController@destroy');
-
+Route::delete('localities/{id}', 'LocalitieController@destroy');*/
+Route::resource('localities', 'LocalityController');
 
 //les routes de localions
 Route::get('locations', 'LocationController@index');
@@ -129,12 +142,11 @@ Route::post('shows', 'ShowController@store');
 Route::get('shows/{id}/edit', 'ShowController@edit');
 Route::put('shows/{id}', 'ShowController@update');
 Route::delete('shows/{id}', 'ShowController@destroy');
-Route::get('shows/{slug}', 'ShowController@afficher')->name('shows');
+Route::get('shows/{title}', 'ShowController@afficher')->name('shows');
 //Route::resource('shows', 'ShowController');// cette ligne equivalent de tt les les routes
 
+Route::resource('listePieces', 'ListePiecesController');
+Route::get('/all.json',[
+]);
 
 
-
-Auth::routes();
-Route::get('/accueil', 'AccueilController@index')->name('accueil');
-Route::get('/home', 'HomeController@index')->name('home');

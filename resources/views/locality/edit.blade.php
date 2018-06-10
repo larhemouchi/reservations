@@ -10,7 +10,7 @@
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
 			
-     <form action="{{url('localities/'.$localitie->id)}}" method="post">
+     <form action="{{url('localities/'.$locality->id)}}" method="post">
      	<input type="hidden" name="_method" value="PUT">
 
 
@@ -18,7 +18,7 @@
 
      	<div class="form-group">
      		<label for="">postal code :</label>		
-     	<input type="text" name="postal_code" class="form-control" value="{{$localitie->postal_code}}">
+     	<input type="text" name="postal_code" class="form-control" value="{{$locality->postal_code}}">
      @if($errors->get('postal_code'))
             @foreach($errors->get('postal_code') as $message)
 
@@ -30,7 +30,7 @@
 
 <div class="form-group">
      		<label for="">locality :</label>		
-     	<input type="text" name="locality" class="form-control" value="{{$localitie->locality}}">
+     	<input type="text" name="locality" class="form-control" value="{{$locality->locality}}">
      @if($errors->get('locality'))
             @foreach($errors->get('locality') as $message)
 

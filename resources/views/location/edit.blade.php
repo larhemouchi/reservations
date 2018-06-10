@@ -41,10 +41,10 @@
         </div>
 
 <div class="form-group">
-            <label for="">Adresse :</label>       
-        <input type="text" name="adresse" class="form-control" value="{{$location->adresse}}">
-     @if($errors->get('adresse'))
-            @foreach($errors->get('adresse') as $message)
+            <label for="">address :</label>       
+        <input type="text" name="address" class="form-control" value="{{$location->address}}">
+     @if($errors->get('address'))
+            @foreach($errors->get('address') as $message)
 
              {{$message}}
             @endforeach

@@ -29,12 +29,36 @@
             @endif
 
      </div>
+     <!--
+  <div class="form-group">
+                             
+           <label for="show_id" class="col-md-4 control-label">show_id :</label>
+                                <div class="col-md-6">
+                                    <select name="show_id" id="show_id" class="form-control">
+                                        @foreach($shows as $show)
+                                            <option value="{{ $representation->show_id }}">{{ $show->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+</div>-->
+<div class="form-group @if($errors->get('when_date')) has-error @endif">
+     		<label for="">When_date :</label>		
+     	<input type="date" name="when_date" class="form-control" value="{{old('when_date')}}">
+        @if($errors->get('when_date'))
+            @foreach($errors->get('when_date') as $message)
 
-<div class="form-group @if($errors->get('when')) has-error @endif">
-     		<label for="">When :</label>		
-     	<input type="date" name="when" class="form-control" value="{{old('when')}}">
-        @if($errors->get('when'))
-            @foreach($errors->get('when') as $message)
+             {{$message}}
+            @endforeach
+
+            @endif
+
+     </div>
+
+     <div class="form-group @if($errors->get('when_time')) has-error @endif">
+            <label for="">When_time :</label>        
+        <input type="time" name="when_time" class="form-control" value="{{old('when_time')}}">
+        @if($errors->get('when_time'))
+            @foreach($errors->get('when_time') as $message)
 
              {{$message}}
             @endforeach

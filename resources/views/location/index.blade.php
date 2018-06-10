@@ -20,7 +20,7 @@
 				<tr>
 					<th>Slug</th>
 					<th>Designation</th>
-					<th>Adresse</th>
+					<th>Address</th>
 					<th>locality id</th>
 					<th>website</th>
 					<th>phone</th>
@@ -32,7 +32,7 @@
 	<tr>
 		<td>{{$location->slug}}</td>
 		<td>{{$location->designation}}</td>
-		<td>{{$location->adresse}}</td>
+		<td>{{$location->address}}</td>
 		<td>{{$location->locality_id}}</td>
 		<td>{{$location->website}}</td>
 		<td>{{$location->phone}}</td>

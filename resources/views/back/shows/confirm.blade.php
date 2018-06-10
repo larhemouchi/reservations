@@ -37,17 +37,25 @@ The Main Configuration Of the web application
                 <th>id</th>
                 <th>name</th>
                 <th>Description</th>
+                <th>Image</th>
+                <th>img_url</th>
                 <th>Location</th>
                 <th>price</th>
+                <th>Confirm / Delete</th>
             </tr>
         </thead>
     </table>
+
 
 </div>
 
 
 
-
+<div>
+     <!-- token lach kisla7 hna : -->
+    <!-- csrf fields - is hidden -->
+    <meta id="csrf-token" name="csrf-token" content="{{ csrf_token() }}">
+</div>
 
   @endslot
 
@@ -89,6 +97,9 @@ The Main Configuration Of the web application
 
   
 $(function() {
+
+
+window.exist = JSON.parse('{{ $exist }}');
 /*
 
 
@@ -357,17 +368,41 @@ Content-Type: application/json
             dataSrc: 'Events',
         },
         columns: [
-        //les proprieté de lobject quon va mettre dans e tableau
-            { data: 'EventId'},
-            { data: 'Name'},
+        //les proprieté de lobject qu'on va mettre dans le tableau
+          { data: 'EventId'},
+
+            { { data: 'Name'},
             { data: 'Description'},
+            data: 'MainImageUrl',
+
+            render: function ( data, type, row ) {
+                return '<img src="'+data+'" width="60px" height="40px" />';
+                //return 'Img Indisponible';
+            }
+
+            },{ data: 'MainImageUrl'},
+             
+            
+            
             //"VenueId": 85,//Location Id
             { data: 'VenueId'},
             //Mochkila khra bach njabdo limage khasa ndakhlo l array nkhaliwha mn ba3d
             // bookable hankhaliwha dima true 7it ma7do t3lan 3lih ya3ni bbokable
-            { data: 'OfferPrice'}
+            { data: 'OfferPrice'},
+            { data: 'EventId',
+            render: function ( data, type, row ) {
+                    if( $.inArray( Number( data ) , window.exist )  == -1 ){
+                        return '<a  href="#" class="btn btn-success btn-confirm" id="'+data+'">Confirm</a>';
 
 
+                    }else{
+                        
+                        return '<a  href="#" class="btn btn-danger btn-delete" id="'+data+'">Delete</a>';
+                    }
+
+                }
+
+            }
         ]
     });
     /**/
@@ -380,7 +415,143 @@ Content-Type: application/json
   
 $( document ).ready(function() {
 
+
+$('#table').on('click','.btn-confirm', function(e){
+    e.preventDefault();
+    // btn-confirm id
+    var id= $(this).attr('id');
+
+    var id_selector = $(this);
+
+    id_selector.attr('disabled', true);
+
+
+
+    var offerprice_parent = id_selector.parent().prev();
+
+    var offerPrice = offerprice_parent.text();
+
+    var venueId_parent = offerprice_parent.parent().prev();
+
+    var VenueId = venueId_parent.text();
+
+    var description_parent = venueId_parent.parent().prev();
+
+    var description = description_parent.text();
+
+    var name_parent = description_parent.parent().prev();
+
+    var name = name_parent.text();
+
+    var img_parent = name_parent.parent().prev();
+
+    var img = img_parent.text();
+
+   // debugger;
+    /*
+
+{ data: 'EventId'},
+            { data: 'Name'},
+            { data: 'Description'},
+            //"VenueId": 85,//Location Id
+            { data: 'VenueId'},
+            //Mochkila khra bach njabdo limage khasa ndakhlo l array nkhaliwha mn ba3d
+            // bookable hankhaliwha dima true 7it ma7do t3lan 3lih ya3ni bbokable
+            { data: 'OfferPrice'},
+            { data: 'EventId',
+
+*/
+
+
+
+
+
+
+    axios.post('/shows-post/'+id,{
+        //csrf token
+        headers: {
+
+
+                            'X-CSRF-TOKEN': $('#csrf-token').attr('content')
+                            },
+
+
+        slug: name,
+        location_id:VenueId,
+        price:offerPrice,
+        img: img
+
+    }).then(function( response ){
+        //if good
+        id_selector.attr('disabled', false);
+        console.log( response.data);
+        id_selector.removeClass('btn-success btn-confirm');
+        id_selector.addClass('btn-danger btn-delete');
+        id_selector.text('Delete');
+
+    }).catch(function( error ){
+        //if error
+        alert('error');
+        console.log( error);
+        id_selector.attr('disabled', false);
+
+    });
+
+ });
+
  
+
+$('#table').on('click','.btn-delete', function(e){
+    e.preventDefault();
+    // btn-confirm id
+    var id= $(this).attr('id');
+
+    var id_selector = $(this);
+
+    id_selector.attr('disabled', true);
+
+
+/*            { data: 'Name'},
+            //Designation 
+            { data: 'Info'},
+            { data: 'Address'},
+            //localityId
+            { data: 'City'},
+            { data: 'Postcode'},
+            //website
+            { data: 'Email'},
+            { data: 'Telephone'},
+            { data: 'VenueId',*/
+   // debugger;
+
+    axios.delete('/shows-delete/'+id,{
+        //csrf token
+        headers: {
+
+
+                            'X-CSRF-TOKEN': $('#csrf-token').attr('content')
+                            } 
+
+    }).then(function( response ){
+        //if good
+        id_selector.attr('disabled', false);
+        console.log( response.data);
+        id_selector.removeClass('btn-danger btn-delete');
+        id_selector.addClass('btn-success btn-confirm');
+        id_selector.text('Confirm');
+
+    }).catch(function( error ){
+        //if error
+        alert('error');
+        console.log( error);
+        id_selector.attr('disabled', false);
+
+    });
+
+ });
+
+
+
 
 });
 

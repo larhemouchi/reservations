@@ -44,13 +44,13 @@
             @endif
 
      </div>
-      <div class="form-group @if($errors->get('adresse'))has-error @endif">
-            <label for="">Adresse :</label>       
-        <input type="text" name="adresse" class="form-control" value="{{old('adresse')}}">
+      <div class="form-group @if($errors->get('address'))has-error @endif">
+            <label for="">address :</label>       
+        <input type="text" name="address" class="form-control" value="{{old('address')}}">
         
 
-            @if($errors->get('adresse'))
-            @foreach($errors->get('adresse') as $message)
+            @if($errors->get('address'))
+            @foreach($errors->get('address') as $message)
 
              {{$message}}
             @endforeach

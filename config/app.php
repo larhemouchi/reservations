@@ -180,6 +180,7 @@ return [
 
 Collective\Html\HtmlServiceProvider::class,
 RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
@@ -233,6 +234,7 @@ RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         'Form' => Collective\Html\FormFacade::class,
       'Html' => Collective\Html\HtmlFacade::class,
       'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+      'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 

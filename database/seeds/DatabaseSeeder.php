@@ -13,8 +13,6 @@ class DatabaseSeeder extends Seeder
     {
 
 
-
-
         DB::table('roles')->insert([
             'id' => 1,
             'role' => 'admin'

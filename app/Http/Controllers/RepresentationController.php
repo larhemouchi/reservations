@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 
 
 use App\Representation;
+use App\Representation_user;
 
 use App\Show;
+use App\Location;
 
 use App\Http\Requests\representationRequest;
 
@@ -23,14 +25,11 @@ class RepresentationController extends Controller
 
             //walakin blati ana 3andi la table show khawiya ghanakhd ha lid bo7do
             //oui
-          
+
             return view('back.representations.confirm', compact('show'));
         }
 
-
-
-
-
+/***********************************************/
      //pour lister les artists
    public function index(){
 
@@ -49,11 +48,13 @@ return view('representation.create');
    	$representation=new Representation();
 
            $representation->show_id=$request->input('show_id');
-		    $representation->when=$request->input('when');
+		   // $representation->when=$request->input('when');
+           $representation->when = date('Y-m-d H:i:s', strtotime("$request->when_date $request->when_time"));
 		    $representation->location_id=$request->input('location_id');
   
 
     $representation->save();
+    
 
     return redirect('representations');
 
@@ -65,7 +66,7 @@ return view('representation.create');
      $representation =  Representation::find($id);
      return view('representation.edit',['representation'=> $representation]);
     
-
+return redirect('representations');
    }
 //pour modifier un artist
        public function update(representationRequest $request,$id){
@@ -73,7 +74,8 @@ return view('representation.create');
 			$representation=Representation::find($id);
 
 			$representation->show_id=$request->input('show_id');
-		    $representation->when=$request->input('when');
+		   // $representation->when=$request->input('when');
+       $representation->when = date('Y-m-d H:i:s', strtotime("$request->when_date $request->when_time"));
 		    $representation->location_id=$request->input('location_id');
 
             $representation->save();

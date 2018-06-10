@@ -15,12 +15,20 @@ class CreateShowsTable extends Migration
     {
         Schema::create('shows', function (Blueprint $table) {
          $table->increments('id');
-            $table->string('slug')->nullable();
-            $table->string('title')->nullable();
+            $table->string('slug');
+            $table->string('title');
             $table->string('poster_url')->nullable();
-            $table->integer('location_id')->references('id')->on('locations')->nullable();
-            $table->tinyInteger('bookable')->nullable();
-            $table->decimal('price')->nullable();
+          //  $table->integer('location_id')->references('id')->on('locations')->nullable();
+
+     $table->integer('location_id')->unsigned()->index();
+            $table->foreign('location_id')
+              ->references('id')
+              ->on('locations')
+              ->onDelete('cascade');
+              //oui safi n9elboh 7it aslan mli sewelt l prof 9ali juste za3ma wach reservable wla la ( bookable wla la)
+            $table->boolean('bookable')->default(false);
+            
+            $table->float('price')->nullable();
             $table->timestamps();
         });
     }

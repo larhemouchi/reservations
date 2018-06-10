@@ -48,17 +48,24 @@ The Main Configuration Of the web application
             { data: 'Telephone'},
 -->
                 <th>id</th>
-                <th>name</th>
+                <th>slug</th>
                 <th>designation</th>
-                <th>adess</th>
+                <th>address</th>
                 <th>locality - city</th>
                 <th>locality - postcode</th>
                 <th>website - email</th>
                 <th>telephone</th>
+                <th>Button</th>
             </tr>
         </thead>
     </table>
 
+</div>
+
+<div>
+     <!-- token lach kisla7 hna : -->
+    <!-- csrf fields - is hidden -->
+    <meta id="csrf-token" name="csrf-token" content="{{ csrf_token() }}">
 </div>
 
 
@@ -106,7 +113,7 @@ The Main Configuration Of the web application
   
 $(function() {
 
-
+window.exist = JSON.parse('{{ $exist }}');
 
 //rendering table
     $('#table').DataTable({
@@ -139,8 +146,21 @@ $(function() {
             //website
             { data: 'Email'},
             { data: 'Telephone'},
+            { data: 'VenueId',
+        render: function ( data, type, row ) {
+            if( $.inArray( Number( data ) , window.exist )  == -1 ){
+                return '<a  href="#" class="btn btn-success btn-confirm" id="'+data+'">Confirm</a>';
 
 
+            }else{
+                
+                return '<a  href="#" class="btn btn-danger btn-delete" id="'+data+'">Delete</a>';
+            }
+        
+    }
+},
+
+            
 
         ]
     });
@@ -172,7 +192,151 @@ Venues:[
   
 $( document ).ready(function() {
 
- 
+ $('#table').on('click','.btn-confirm', function(e){
+    e.preventDefault();
+    // btn-confirm id
+    var id= $(this).attr('id');
+
+    var id_selector = $(this);
+
+    id_selector.attr('disabled', true);
+
+
+/*            { data: 'Name'},
+            //Designation 
+            { data: 'Info'},
+            { data: 'Address'},
+            //localityId
+            { data: 'City'},
+            { data: 'Postcode'},
+            //website
+            { data: 'Email'},
+            { data: 'Telephone'},
+            { data: 'VenueId',*/
+   // debugger;
+    var phone_parent = id_selector.parent().prev();
+
+    var phone = phone_parent.text();
+
+    var website_parent = phone_parent.prev();
+
+    var website = website_parent.text();
+
+    var postalcode_parent = website_parent.prev();
+
+    var postal_code = postalcode_parent.text();
+
+    var locality_parent = postalcode_parent.prev();
+
+    var locality_id = locality_parent.text();
+
+    var address_parent = locality_parent.prev();
+
+    var address = address_parent.text();
+
+    var designation_parent= address_parent.prev();
+
+    //var designation = designation_parent.text();
+    var designation = null;
+
+    var slug_parent= designation_parent.prev();
+
+    var slug2 = slug_parent.text();
+
+
+
+
+
+
+
+    axios.post('/locations-post/'+id,{
+        //csrf token
+        headers: {
+
+
+                            'X-CSRF-TOKEN': $('#csrf-token').attr('content')
+                            },
+        id: id,
+        phone: phone,
+        website:website,
+        locality_id:locality_id,
+        address:address,
+        designation:designation,
+        slug2: slug2,
+        postal_code: postal_code 
+
+    }).then(function( response ){
+        //if good
+        id_selector.attr('disabled', false);
+        console.log( response.data);
+        id_selector.removeClass('btn-success btn-confirm');
+        id_selector.addClass('btn-danger btn-delete');
+        id_selector.text('Delete');
+
+    }).catch(function( error ){
+        //if error
+        alert('error');
+        console.log( error);
+        id_selector.attr('disabled', false);
+
+    });
+
+ });
+
+
+/***********************************/
+
+
+
+
+$('#table').on('click','.btn-delete', function(e){
+    e.preventDefault();
+    // btn-confirm id
+    var id= $(this).attr('id');
+
+    var id_selector = $(this);
+
+    id_selector.attr('disabled', true);
+
+
+/*            { data: 'Name'},
+            //Designation 
+            { data: 'Info'},
+            { data: 'Address'},
+            //localityId
+            { data: 'City'},
+            { data: 'Postcode'},
+            //website
+            { data: 'Email'},
+            { data: 'Telephone'},
+            { data: 'VenueId',*/
+   // debugger;
+
+    axios.delete('/locations-delete/'+id,{
+        //csrf token
+        headers: {
+
+
+                            'X-CSRF-TOKEN': $('#csrf-token').attr('content')
+                            } 
+
+    }).then(function( response ){
+        //if good
+        id_selector.attr('disabled', false);
+        console.log( response.data);
+        id_selector.removeClass('btn-danger btn-delete');
+        id_selector.addClass('btn-success btn-confirm');
+        id_selector.text('Confirm');
+
+    }).catch(function( error ){
+        //if error
+        alert('error');
+        console.log( error);
+        id_selector.attr('disabled', false);
+
+    });
+
+ });
 
 });
 

@@ -13,6 +13,16 @@ class Location extends Model
 
     */
 
+    protected $fillable = [
+        'id',
+        'phone',
+        'website',
+        'address',
+        'designation',
+        'slug',
+        'locality_id'
+    ];
+
 	public function locality(){
      
      return $this->belongsTo('App\Locality');

@@ -29,6 +29,7 @@
             @endif
 
      </div>
+   
      <div class="form-group @if($errors->get('title'))has-error @endif">
             <label for="">Title :</label>       
         <input type="text" name="title" class="form-control" value="{{old('title')}}">
@@ -85,11 +86,23 @@
             @endif
 
      </div>
-<div class="form-group @if($errors->get('when')) has-error @endif">
-            <label for="">When :</label>        
-        <input type="date" name="when" class="form-control" value="{{old('when')}}">
-        @if($errors->get('when'))
-            @foreach($errors->get('when') as $message)
+<div class="form-group @if($errors->get('when_date')) has-error @endif">
+            <label for="">When date :</label>       
+        <input type="date" name="when_date" class="form-control" value="{{old('when_date')}}">
+        @if($errors->get('when_date'))
+            @foreach($errors->get('when_date') as $message)
+
+             {{$message}}
+            @endforeach
+
+            @endif
+
+     </div>
+     <div class="form-group @if($errors->get('when_time')) has-error @endif">
+            <label for="">When heure :</label>        
+        <input type="time" name="when_time" class="form-control" value="{{old('when_time')}}">
+        @if($errors->get('when_time'))
+            @foreach($errors->get('when_time') as $message)
 
              {{$message}}
             @endforeach
