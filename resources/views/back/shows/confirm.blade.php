@@ -35,17 +35,17 @@ The Main Configuration Of the web application
         <thead>
             <tr>
                 <th>id</th>
-                <th>name</th>
-                <th>Description</th>
+                
                 <th>Image</th>
                 <th>img_url</th>
+                <th>name</th>
+                <th>Description</th>
                 <th>Location</th>
                 <th>price</th>
                 <th>Confirm / Delete</th>
             </tr>
         </thead>
     </table>
-
 
 </div>
 
@@ -80,13 +80,13 @@ The Main Configuration Of the web application
 <script src="{!! asset('adminl/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') !!}"></script>
 
 
-<!-- SlimScroll -->
+<!-- SlimScroll
 <script src="{!! asset('adminl/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') !!}"></script>
 
 
-<!-- FastClick -->
+ FastClick 
 <script src="{!! asset('adminl/bower_components/fastclick/lib/fastclick.js') !!}"></script>
-
+ -->
 @endsection
 
 @section('scripts')
@@ -367,23 +367,25 @@ Content-Type: application/json
             //'object qui contient les infos'
             dataSrc: 'Events',
         },
+
+       
+/*
+        data:'{!! $resp !!}',
+        dataSrc: 'Events',*/
         columns: [
         //les proprieté de lobject qu'on va mettre dans le tableau
-          { data: 'EventId'},
+            { data: 'EventId'},
 
-            { { data: 'Name'},
-            { data: 'Description'},
-            data: 'MainImageUrl',
-
+            { data: 'MainImageUrl',
             render: function ( data, type, row ) {
                 return '<img src="'+data+'" width="60px" height="40px" />';
                 //return 'Img Indisponible';
             }
 
-            },{ data: 'MainImageUrl'},
-             
-            
-            
+            },
+             { data: 'MainImageUrl'},
+            { data: 'Name'},
+            { data: 'Description'},
             //"VenueId": 85,//Location Id
             { data: 'VenueId'},
             //Mochkila khra bach njabdo limage khasa ndakhlo l array nkhaliwha mn ba3d

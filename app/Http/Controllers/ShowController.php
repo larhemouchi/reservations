@@ -16,36 +16,95 @@ class ShowController extends Controller
           $this->middleware('auth');
         }
 */
-public function testapi(){
-/*"url": "https://api-sandbox.londontheatredirect.com/rest/v2/Venues",   
-            //header bach ngolou lou bghina JSON   
-            "contentType": "application/j*/
-  //Server url
-  $url = "https://api-sandbox.londontheatredirect.com/rest/v2/Venues/85";
-  $apiKey = 'gesjdrynjgev8gqd2rkb6pkz'; // should match with Server key
+        /*
+public function in(  ){
+  return 'an jit';
+
+}
+*/
+public function fillRep( Show $show ){
+
+  $returnedArray = $this->api('Events/'.$show->id.'/Performances');
+
+  foreach ($returnedArray['Performances'] as $value) {
+    # code...
+      $v = explode("T", $value['PerformanceDate']  );
+
+      $c = implode(" ", $v);
+
+      Representation::create([
+        'id' => $value['PerformanceId'],
+        'show_id' => $show->id,
+        'location_id' => $show->location_id,
+        'when' => $c
+        ]);
+
+  }
+  
+}
 
 
-$context = stream_context_create(array(
-    'http' => array(
-        'method' => 'GET',
-        'header'=>"Content-type: application/json\r\n" .
-              "Api-Key: ".$apiKey."\r\n",
+public function api($link){ 
 
-        'timeout' => 60
-    )
-));
 
-$resp = file_get_contents($url, FALSE, $context);
+    $url = "https://api-sandbox.londontheatredirect.com/rest/v2/".$link;
+    $apiKey = 'gesjdrynjgev8gqd2rkb6pkz'; // should match with Server key
 
-$decoded_resp = json_decode($resp, true);
-dd($decoded_resp['Venue']);
+
+  $context = stream_context_create(array(
+      'http' => array(
+          'method' => 'GET',
+          'header'=>"Content-type: application/json\r\n" .
+                "Api-Key: ".$apiKey."\r\n",
+
+          'timeout' => 60
+      )
+  ));
+
+  $resp = file_get_contents($url, FALSE, $context);
+
+  return json_decode($resp, true);
 }
 
 
 
   public function conf(){
     $exist = Show::pluck('id')->toJson();
-      return view('back.shows.confirm', compact( 'exist' ) );
+
+
+/********************/
+
+      $url = "https://api-sandbox.londontheatredirect.com/rest/v2/Events";
+      $apiKey = 'gesjdrynjgev8gqd2rkb6pkz'; // should match with Server key
+
+
+    $context = stream_context_create(array(
+        'http' => array(
+            'method' => 'GET',
+            'header'=>"Content-type: application/json\r\n" .
+                  "Api-Key: ".$apiKey."\r\n",
+
+            'timeout' => 60000
+        )
+    ));
+
+    $resp = file_get_contents($url, FALSE, $context);
+
+    $decoded_resp = json_decode($resp, true);
+
+
+
+
+
+/***********************/
+
+
+
+
+
+
+
+      return view('back.shows.confirm', compact( 'exist', 'resp' ) );
   }
 
   public function post(Request $request, $id){
@@ -83,30 +142,10 @@ slug: name,
 /*******************************/
 
 
-  $url = "https://api-sandbox.londontheatredirect.com/rest/v2/Venues/".$request->location_id;
-  $apiKey = 'gesjdrynjgev8gqd2rkb6pkz'; // should match with Server key
+
+$decoded_resp = $this->api("Venues/".$request->location_id);
 
 
-$context = stream_context_create(array(
-    'http' => array(
-        'method' => 'GET',
-        'header'=>"Content-type: application/json\r\n" .
-              "Api-Key: ".$apiKey."\r\n",
-
-        'timeout' => 60
-    )
-));
-
-$resp = file_get_contents($url, FALSE, $context);
-
-$decoded_resp = json_decode($resp, true);
-
-/*'id' => $request->id,
-              'phone' => $request->phone,
-              'website' => $request->website,
-              'address' => $request->address,
-              'designation' => $request->slug2
-            ];*/
 
 /*******************************/
 
@@ -159,6 +198,12 @@ $arrayLocation = [
 // hna gha t creer locations walakin bghit nefham wach lma3na anak katsejla f base de donnée wla kif
           
           if( $show ){
+
+
+
+              $this->fillRep( $show->id );
+
+
               return response()->json([
               'id' => $show->id,
               'title' => $show->title,

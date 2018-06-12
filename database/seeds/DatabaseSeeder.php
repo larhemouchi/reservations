@@ -52,11 +52,54 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
+$locality = App\Locality::create([
+
+
+            'locality' => 'London',
+            'postal_code' => 'W1D 4HS'
 
 
 
+    ]);
 
 
+
+DB::table('locations')->insert([
+            'id' => 10,
+            'slug' => 'prince_edward_theatre',
+            'designation' => 'Prince Edward Theatre',
+            'address'=> 'Old Compton Street',
+            'locality_id'=> $locality->id,
+            'website'=>'',
+            'phone'=> ''
+
+
+
+    ]);
+
+DB::table('shows')->insert([
+
+            'id' => 1742,
+            'slug' => 'Aladdin',
+            'title' => 'Aladdin',
+            'poster_url'=> 'https://media.londontheatredirect.com/Event/Aladdin/event-list-image_15943.jpg',
+            'location_id'=>10,
+            'price'=>95.0,
+
+
+
+    ]);
+
+
+//is just a test
+
+DB::table('representations')->insert([
+
+            'id' => 1,
+            'show_id' => 1742,
+            'location_id'=>10,
+            'when'=> '2018-06-12 19:30:00' ,
+    ]);
 
 
 

@@ -12,6 +12,18 @@ class Show extends Model
     protected $dates=['deleted_at'];
 
     */
+
+    protected $fillable = [
+
+            'slug',
+            'title',
+            'poster_url',
+            'location_id',
+            'price'
+
+    ];
+
+
     public function artisteTypes(){
      
      return $this->hasMany('App\Show', 'artiste_type_show', 'artiste_type_id', 'show_id');
