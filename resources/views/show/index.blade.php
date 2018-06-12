@@ -20,7 +20,7 @@
   <div class="col-sm-6 col-md-4">  
       <div class="thumbnail">
     	<div class='panel panel-primary' >
-      <img src="{{asset('storage/'.$show->poster_url)}}"class='img-responsive center-block' width='330' height='300'alt="picture">
+      <img src="{{asset($show->poster_url)}}"class='img-responsive center-block' width='330' height='300'alt="picture">
       <div class="caption">
         <h3>Title: {{$show->title}}</h3>
        

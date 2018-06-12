@@ -29,8 +29,10 @@ Route::get('/dashboard	', 'DashboardController@index')->name('dashboard.index');
 
 Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 Route::get('/shows-conf', 'ShowController@conf')->name('shows.conf');
-Route::post('/shows-post', 'ShowController@post')->name('shows.post');
-Route::delete('/shows-delete', 'ShowController@delete')->name('shows.delete');
+//Route::post('/shows-post', 'ShowController@post')->name('shows.post');
+//Route::delete('/shows-delete', 'ShowController@delete')->name('shows.delete');
+Route::post('/shows-post/{id}', 'ShowController@post')->name('shows.post');
+Route::delete('/shows-delete/{id}', 'ShowController@delete')->name('shows.delete');
 
 Route::get('/shows_dashboard', 'ShowController@fetch')->name('shows.list_repre_conf');
 Route::get('/locations-conf', 'LocationController@conf')->name('locations.conf');

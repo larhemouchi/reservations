@@ -38,7 +38,8 @@ class LocationController extends Controller
               'phone' => $request->phone,
               'website' => $request->website,
               'address' => $request->address,
-              'designation' => $request->slug2
+              'designation' => $request->slug2,
+             // 'locality_id'=>$request->locality_id,
             ];
 
           if( $slug ){// hadi mafhamtekchi chno bghiti te3ml

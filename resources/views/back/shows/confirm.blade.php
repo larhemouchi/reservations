@@ -34,13 +34,12 @@ The Main Configuration Of the web application
     <table class="table table-bordered table-striped" id="table">
         <thead>
             <tr>
-                <th>id</th>
+                <th>ID</th>
+                 <th>poster_url</th>
+                <th>slug</th>
+                <th>title</th>
                 
-                <th>Image</th>
-                <th>img_url</th>
-                <th>name</th>
-                <th>Description</th>
-                <th>Location</th>
+                <th>location_id</th>
                 <th>price</th>
                 <th>Confirm / Delete</th>
             </tr>
@@ -80,13 +79,13 @@ The Main Configuration Of the web application
 <script src="{!! asset('adminl/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') !!}"></script>
 
 
-<!-- SlimScroll
+<!-- SlimScroll -->
 <script src="{!! asset('adminl/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') !!}"></script>
 
 
- FastClick 
+<!-- FastClick -->
 <script src="{!! asset('adminl/bower_components/fastclick/lib/fastclick.js') !!}"></script>
- -->
+
 @endsection
 
 @section('scripts')
@@ -100,253 +99,8 @@ $(function() {
 
 
 window.exist = JSON.parse('{{ $exist }}');
-/*
 
 
-Api-Key: gesjdrynjgev8gqd2rkb6pkz
-Content-Type: application/json
-*/
-/*
-	axios.post('ourApp/fin nfformattti',{
-		parameters:{
-			'title': 'Name',
-			'id': 'EventType'  
-		}
-	}).then(function(response){
-		console.log( response.data);
-		$('#table').DataTable({
-				ajax: response.data,
-				dataSrc: 'Events',
-
-        columns: [
-            { data: 'EventId'},
-            { data: 'Name'}
-        ]
-    });
-
-	}).catch(function(response){
-		alert('not good');
-	});
-	*/
-/**/
-/*'data': {
-    /LOBJECT!!!!!!!
-    "Events": [{
-
-        LES PROPRIETE
-
-        "EventId": 1742,
-        "EventType": 1,
-        "Name": "Aladdin",
-        "Description": "<p>Disney&rsquo;s spectacular musical Aladdin is everything you could wish for and more, and is dazzling audiences daily at the beautiful Prince Edward Theatre, in the heart of London&rsquo;s West End.<br />\r\n&nbsp;<br />\r\nBreathtaking sets, mind-blowing special effects, over 350 lavish costumes and a fabulous cast and orchestra bring the magic of Disney&rsquo;s Aladdin to life on the West End stage.<br />\r\n&nbsp;<br />\r\nFeaturing all the songs from the classic Academy Award&reg;-winning film including &lsquo;Friend Like Me&rsquo;, &lsquo;A Whole New World&rsquo; and &lsquo;Arabian Nights&rsquo;, prepare to experience the unmissable &lsquo;theatrical magic&rsquo; (Daily Telegraph) that is Aladdin.<br />\r\n&nbsp;</p>\r\n",
-        "VenueId": 10,
-        "RunningTime": "2hr 30min (inc. interval)",
-        "MinimumAge": "Children under 3 will not be admitted and under 16s must be seated next to an adult.",
-        "ImportantNotice": "This production contains theatrical smoke and fog effects, pyrotechnics, strobe lighting and loud noises with an auditorium blackout of 8 seconds around 45 minutes into the performance. For your comfort and security, you may be subject to additional checks upon entering the theatre - we appreciate your patience and understanding while these are taking place.\r\nPlease note that the theatre is unable to accept large items of luggage in their cloakrooms at this time. If you are travelling with such items, storage solutions are available throughout London.",
-        "MainImageUrl": "https://media.londontheatredirect.com/Event/Aladdin/event-list-image_15943.jpg",
-        "SmallImageUrl": "https://media.londontheatredirect.com/Event/Aladdin/event-list-image_15943.jpg",
-        "SpecialGraphics": "6",
-        "ShortOfferText": "No booking fee",
-        "LongOfferText": "<p><strong>NO BOOKING FEE OFFER</strong></p>\r\n\r\n<p>Valid Monday - Friday performances 16 April - 25 May 2018</p>\r\n\r\n<p>Book and pay by Sunday 20 May 2018</p>\r\n",
-        "CurrentPrice": 92.5,
-        "OfferPrice": 92.5,
-        "StartDate": "2016-06-02T19:30:00",
-        "EndDate": "2018-12-01T19:30:00",
-        "EventMinimumPrice": 30.0,
-        "Images": [{
-            "Width": 800,
-            "Height": 450,
-            "Url": "https://media.londontheatredirect.com/Event/Aladdin/event-gallery-image_15552.jpg"
-        }, {
-            "Width": 800,
-            "Height": 450,
-            "Url": "https://media.londontheatredirect.com/Event/Aladdin/event-gallery-image_15553.jpg"
-        }, {
-            "Width": 800,
-            "Height": 450,
-            "Url": "https://media.londontheatredirect.com/Event/Aladdin/event-gallery-image_15554.jpg"
-        }, {
-            "Width": 800,
-            "Height": 450,
-            "Url": "https://media.londontheatredirect.com/Event/Aladdin/event-gallery-image_15555.jpg"
-        }, {
-            "Width": 800,
-            "Height": 450,
-            "Url": "https://media.londontheatredirect.com/Event/Aladdin/event-gallery-image_15556.jpg"
-        }, {
-            "Width": 800,
-            "Height": 450,
-            "Url": "https://media.londontheatredirect.com/Event/Aladdin/event-gallery-image_15557.jpg"
-        }, {
-            "Width": 800,
-            "Height": 450,
-            "Url": "https://media.londontheatredirect.com/Event/Aladdin/event-gallery-image_15558.jpg"
-        }, {
-            "Width": 800,
-            "Height": 450,
-            "Url": "https://media.londontheatredirect.com/Event/Aladdin/event-gallery-image_15559.jpg"
-        }, {
-            "Width": 800,
-            "Height": 450,
-            "Url": "https://media.londontheatredirect.com/Event/Aladdin/event-gallery-image_15560.jpg"
-        }, {
-            "Width": 800,
-            "Height": 450,
-            "Url": "https://media.londontheatredirect.com/Event/Aladdin/event-gallery-image_15561.jpg"
-        }, {
-            "Width": 800,
-            "Height": 450,
-            "Url": "https://media.londontheatredirect.com/Event/Aladdin/event-gallery-image_15562.jpg"
-        }],
-        "MultimediaContent": [{
-            "Type": 0,
-            "Url": "https://youtu.be/MtjuXb3dycw"
-        }],
-        "EventDetailUrl": "https://www.londontheatredirect.com/musical/1742/aladdin-tickets.aspx",
-        "TagLine": "Soar into A Whole New World with Disney’s Aladdin at London’s Prince Edward Theatre.",
-        "PrintAtHomeTicketsEnabled": false
-    }, {
-        "EventId": 384,
-        "EventType": 1,
-        "Name": "Wicked",
-        "Description": "<p>WICKED<span style=\"background-color:transparent; color:rgb(0, 0, 0)\">, the smash hit musical that tells the incredible untold story of the Witches of Oz, is pleased to announce the opening of its 25</span><span style=\"background-color:transparent; color:rgb(0, 0, 0)\">th</span><span style=\"background-color:transparent; color:rgb(0, 0, 0)\">&nbsp;new booking period on Monday (22 January 2018). Over 500,000 new tickets for &ldquo;</span>the world class West End musical&rdquo;&nbsp;<span style=\"background-color:transparent; color:rgb(0, 0, 0)\">(Official London Theatre) are being released, with booking extended to&nbsp;</span>Saturday 25&nbsp;May 2019.</p>\r\n\r\n<p><span style=\"background-color:transparent; color:rgb(0, 0, 0)\">&ldquo;</span>The gravity-defying&nbsp;Wizard of Oz&nbsp;prequel<span style=\"background-color:transparent; color:rgb(0, 0, 0)\">&rdquo; (Time Out London) recently became the&nbsp;</span>7th&nbsp;longest running&nbsp;show currently playing in the West End<span style=\"background-color:transparent; color:rgb(0, 0, 0)\">. Already also the 15th&nbsp;longest running&nbsp;show in West End theatre history, WICKED has been seen by over&nbsp;</span>8.5 million people<span style=\"background-color:transparent; color:rgb(0, 0, 0)\">&nbsp;at London&rsquo;s Apollo Victoria Theatre and played almost 5000 performances. Around the world, WICKED has won over&nbsp;</span>100 major awards<span style=\"background-color:transparent; color:rgb(0, 0, 0)\">, including ten theatregoer-voted&nbsp;</span>WhatsOnStage Awards<span style=\"background-color:transparent; color:rgb(0, 0, 0)\">&nbsp;(winning &lsquo;Best West End Show&rsquo; on three occasions) and two&nbsp;</span>Olivier Audience Awards<span style=\"background-color:transparent; color:rgb(0, 0, 0)\">&nbsp;in the UK.&nbsp;</span></p>\r\n\r\n<p>&quot;Wicked is amazing. Absolutely amazing&quot; -- Daily Mail<br />\r\n&quot;A remarkable kaleidoscope of magical shocks, surprises and sensations - Wicked works like a dream&quot; -- Evening Standard&nbsp;<br />\r\n&quot;It is magnificent to see a musical that manages to be both populist and intelligent at the same time&quot; -- The Sunday Telegraph</p>\r\n",
-        "VenueId": 85,
-        "RunningTime": "2hr 45min (inc. interval)",
-        "MinimumAge": "Children under 3 will not be admitted.  Children under 16 years must be accompanied by an adult.",
-        "ImportantNotice": "",
-        "MainImageUrl": "https://media.londontheatredirect.com/Event/Wicked/event-list-image_15047.jpg",
-        "SmallImageUrl": "https://media.londontheatredirect.com/Event/Wicked/event-list-image_15047.jpg",
-        "SpecialGraphics": "6",
-        "ShortOfferText": "No booking fee",
-        "LongOfferText": "<p><strong>NO BOOKING FEE OFFER</strong></p>\r\n\r\n<p>Valid on &pound;39 - &pound;125 seats for Monday - Friday performances until 26 May 2018.</p>\r\n\r\n<p>Promotional rate cannot be applied retrospectively to previously purchased tickets.</p>\r\n\r\n<p>All tickets subject to availability.</p>\r\n",
-        "CurrentPrice": 95.0,
-        "OfferPrice": 95.0,
-        "StartDate": "2015-01-01T19:30:00",
-        "EndDate": "2019-05-25T19:30:00",
-        "EventMinimumPrice": 21.0,
-        "Images": [{
-            "Width": 800,
-            "Height": 450,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15657.jpg"
-        }, {
-            "Width": 800,
-            "Height": 460,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15658.jpg"
-        }, {
-            "Width": 800,
-            "Height": 527,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15659.jpg"
-        }, {
-            "Width": 800,
-            "Height": 534,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15660.jpg"
-        }, {
-            "Width": 800,
-            "Height": 450,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15661.jpg"
-        }, {
-            "Width": 800,
-            "Height": 534,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15662.jpg"
-        }, {
-            "Width": 800,
-            "Height": 534,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15663.jpg"
-        }, {
-            "Width": 800,
-            "Height": 490,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15664.jpg"
-        }, {
-            "Width": 800,
-            "Height": 534,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15665.jpg"
-        }, {
-            "Width": 800,
-            "Height": 534,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15666.jpg"
-        }, {
-            "Width": 800,
-            "Height": 450,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15667.jpg"
-        }, {
-            "Width": 800,
-            "Height": 534,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15668.jpg"
-        }, {
-            "Width": 800,
-            "Height": 534,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15669.JPG"
-        }, {
-            "Width": 401,
-            "Height": 600,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15670.jpg"
-        }, {
-            "Width": 800,
-            "Height": 534,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15671.jpg"
-        }, {
-            "Width": 401,
-            "Height": 600,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15672.jpg"
-        }, {
-            "Width": 800,
-            "Height": 587,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15673.jpg"
-        }, {
-            "Width": 401,
-            "Height": 600,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15674.JPG"
-        }, {
-            "Width": 401,
-            "Height": 600,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15675.jpg"
-        }, {
-            "Width": 401,
-            "Height": 600,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15676.jpg"
-        }, {
-            "Width": 800,
-            "Height": 534,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15677.JPG"
-        }, {
-            "Width": 401,
-            "Height": 600,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15678.jpg"
-        }, {
-            "Width": 401,
-            "Height": 600,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15679.jpg"
-        }, {
-            "Width": 401,
-            "Height": 600,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15680.jpg"
-        }, {
-            "Width": 401,
-            "Height": 600,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15681.jpg"
-        }, {
-            "Width": 401,
-            "Height": 600,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15682.JPG"
-        }, {
-            "Width": 400,
-            "Height": 600,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15683.jpg"
-        }, {
-            "Width": 400,
-            "Height": 600,
-            "Url": "https://media.londontheatredirect.com/Event/Wicked/event-gallery-image_15791.jpg"
-        }],
-        "MultimediaContent": [{
-            "Type": 0,
-            "Url": "https://youtu.be/j93SF9TyhMY"
-        }],
-        "EventDetailUrl": "https://www.londontheatredirect.com/musical/384/wicked-tickets.aspx",
-        "TagLine": "Defy Gravity with Wicked, one of London's most beloved musicals.",
-        "PrintAtHomeTicketsEnabled": true
-    }
-    ]
-    },*/
 
 
 //rendering table
@@ -368,21 +122,11 @@ Content-Type: application/json
             dataSrc: 'Events',
         },
 
-       
-/*
-        data:'{!! $resp !!}',
-        dataSrc: 'Events',*/
+
         columns: [
         //les proprieté de lobject qu'on va mettre dans le tableau
             { data: 'EventId'},
 
-            { data: 'MainImageUrl',
-            render: function ( data, type, row ) {
-                return '<img src="'+data+'" width="60px" height="40px" />';
-                //return 'Img Indisponible';
-            }
-
-            },
              { data: 'MainImageUrl'},
             { data: 'Name'},
             { data: 'Description'},
@@ -398,13 +142,13 @@ Content-Type: application/json
 
 
                     }else{
-                        
+          
                         return '<a  href="#" class="btn btn-danger btn-delete" id="'+data+'">Delete</a>';
                     }
 
                 }
 
-            }
+            },
         ]
     });
     /**/
@@ -413,12 +157,12 @@ Content-Type: application/json
 
 </script>
 
+
 <script type="text/javascript">
   
 $( document ).ready(function() {
 
-
-$('#table').on('click','.btn-confirm', function(e){
+ $('#table').on('click','.btn-confirm', function(e){
     e.preventDefault();
     // btn-confirm id
     var id= $(this).attr('id');
@@ -428,60 +172,55 @@ $('#table').on('click','.btn-confirm', function(e){
     id_selector.attr('disabled', true);
 
 
-
-    var offerprice_parent = id_selector.parent().prev();
-
-    var offerPrice = offerprice_parent.text();
-
-    var venueId_parent = offerprice_parent.parent().prev();
-
-    var VenueId = venueId_parent.text();
-
-    var description_parent = venueId_parent.parent().prev();
-
-    var description = description_parent.text();
-
-    var name_parent = description_parent.parent().prev();
-
-    var name = name_parent.text();
-
-    var img_parent = name_parent.parent().prev();
-
-    var img = img_parent.text();
-
+/*            { data: 'Name'},
+            //Designation 
+            { data: 'Info'},
+            { data: 'Address'},
+            //localityId
+            { data: 'City'},
+            { data: 'Postcode'},
+            //website
+            { data: 'Email'},
+            { data: 'Telephone'},
+            { data: 'VenueId',*/
    // debugger;
-    /*
 
-{ data: 'EventId'},
-            { data: 'Name'},
-            { data: 'Description'},
-            //"VenueId": 85,//Location Id
-            { data: 'VenueId'},
-            //Mochkila khra bach njabdo limage khasa ndakhlo l array nkhaliwha mn ba3d
-            // bookable hankhaliwha dima true 7it ma7do t3lan 3lih ya3ni bbokable
-            { data: 'OfferPrice'},
-            { data: 'EventId',
+    var slug_parent = id_selector.parent().prev();
 
-*/
+    var slug = slug_parent.text();
+
+    var poster_url_parent = slug_parent.prev();
+
+    var poster_url = poster_url_parent.text();
+
+    var location_id_parent = poster_url_parent.prev();
+
+    var location_id = location_id_parent.text();
+ 
+    var price_parent = location_id_parent.prev();
+
+    var price = price_parent.text();
+
+    var title_parent = price_parent.prev();
+     
+    var title = title_parent.text();
 
 
-
-
-
-
-    axios.post('/shows-post/'+id,{
+       axios.post('/shows-post/'+id,{
         //csrf token
         headers: {
 
 
-                            'X-CSRF-TOKEN': $('#csrf-token').attr('content')
+           'X-CSRF-TOKEN': $('#csrf-token').attr('content')
                             },
-
-
-        slug: name,
-        location_id:VenueId,
-        price:offerPrice,
-        img: img
+        id: id,
+        slug: slug,
+        location_id:location_id,
+        title:title,
+        poster_url:poster_url,
+        price: price,
+      
+        
 
     }).then(function( response ){
         //if good
@@ -501,7 +240,11 @@ $('#table').on('click','.btn-confirm', function(e){
 
  });
 
- 
+
+/***********************************/
+
+
+
 
 $('#table').on('click','.btn-delete', function(e){
     e.preventDefault();
@@ -531,7 +274,7 @@ $('#table').on('click','.btn-delete', function(e){
         headers: {
 
 
-                            'X-CSRF-TOKEN': $('#csrf-token').attr('content')
+            'X-CSRF-TOKEN': $('#csrf-token').attr('content')
                             } 
 
     }).then(function( response ){
@@ -551,9 +294,6 @@ $('#table').on('click','.btn-delete', function(e){
     });
 
  });
-
-
-
 
 });
 

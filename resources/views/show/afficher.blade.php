@@ -20,7 +20,7 @@
 			<center><h2>{{$show->title}}</h2></center>
             <a href="#dates">
 
-			<img src="{{asset('storage/'.$show->poster_url)}}" alt="-" width="380" height="480" class="pb-15">
+			<img src="{{asset($show->poster_url)}}" alt="-" width="380" height="480" class="pb-15">
             </a>
 		</div>
 		<div class="col-sm-9">

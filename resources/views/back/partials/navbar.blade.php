@@ -13,14 +13,14 @@
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              {!! Html::image('images/profils/smar.jpg','User Image', ['class' => 'user-image'] ) !!}
+              {!! Html::image('storage/images/profils/smar.jpg','User Image', ['class' => 'user-image'] ) !!}
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">Larhemouchi Zouhair</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                {!! Html::image('images/profils/smar.jpg','User Image', ['class' => 'img-circle'] ) !!}
+                {!! Html::image('storage/images/profils/smar.jpg','User Image', ['class' => 'img-circle'] ) !!}
 
                 <p>
                   Larhemouchi Zouhair - Admin

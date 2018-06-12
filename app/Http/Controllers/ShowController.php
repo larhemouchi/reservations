@@ -11,18 +11,19 @@ use App\Http\Requests\showRequest;
 
 class ShowController extends Controller
 {
-  /*
+  
        public function __construct(){
-          $this->middleware('auth');
+        /*  $this->middleware('auth');
+          */
         }
-*/
+
         /*
 public function in(  ){
   return 'an jit';
 
 }
 */
-public function fillRep( Show $show ){
+public function fillRep( Show $show ){ //pour recuperer une date correcte 
 
   $returnedArray = $this->api('Events/'.$show->id.'/Performances');
 
@@ -66,11 +67,18 @@ public function api($link){
   return json_decode($resp, true);
 }
 
+// hadi bach tsupprimer location 3an tariq l id 
+  public function delete(Request $request,Show $id){
+    $id->delete();
+// hna bach y3ti l 9ima nhad ligen anaha memsou7a
+    return response()->json(['response' => 'deleted']);
+
+  }
 
 
   public function conf(){
     $exist = Show::pluck('id')->toJson();
-
+return view('back.shows.confirm', compact( 'exist' ) );
 
 /********************/
 
@@ -88,23 +96,13 @@ public function api($link){
         )
     ));
 
-    $resp = file_get_contents($url, FALSE, $context);
+    //$resp = file_get_contents($url, FALSE, $context);
 
-    $decoded_resp = json_decode($resp, true);
-
-
+   // $decoded_resp = json_decode($resp, true);
 
 
 
-/***********************/
-
-
-
-
-
-
-
-      return view('back.shows.confirm', compact( 'exist', 'resp' ) );
+      return view('back.shows.confirm', compact( 'exist' ) );
   }
 
   public function post(Request $request, $id){
@@ -125,29 +123,24 @@ slug: name,
             $slug = str_slug( $request->slug , '_' );// slug ghankhaliw kol kelma wkelma mertabta b _
 
           $array = [// hna ghan3amro had table (array) b les données li ghanjibo men api 
-              'id' => $id,
-              'title' => $request->slug,
-              'slug' => $slug,
-              'poster_url' => $request->img,
+              'id' => $request->id,
+              'title' => $request->title,
+              'slug' => $request->slug,
+             // 'location_id' => $request->$location_id,
+              'poster_url' => $request->poster_url,
               'price' => $request->price
             ];
 
 // hna ida fhamt b7al li kate3tih chemain absolu bach tqolo bli location_id howa id d  localities
-          $location_exist = Location::find( $request->location_id );
+          $location_exist = Show::find( $request->location_id );
 
           if( $location_exist ){// hna bsara7a mafhamtchi chbaghi te3ml 
               $array['location_id'] = $location_exist->id ;
           }else{
 
-/*******************************/
-
-
 
 $decoded_resp = $this->api("Venues/".$request->location_id);
 
-
-
-/*******************************/
 
 $arrayLocation = [
     'id' => $decoded_resp['Venue']['VenueId'],
@@ -208,6 +201,7 @@ $arrayLocation = [
               'id' => $show->id,
               'title' => $show->title,
               'slug' => $show->slug,
+              'location_id' => $show->location_id,
               'poster_url' => $show->poster_url ,
               'price' => $show->price
                 ]);

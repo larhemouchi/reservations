@@ -6,7 +6,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          {!! Html::image('images/profils/smar.jpg','Smar Image', ['class' => 'img-circle'] ) !!}
+          {!! Html::image('storage/images/profils/smar.jpg','Smar Image', ['class' => 'img-circle'] ) !!}
         </div>
         <div class="pull-left info">
           <p>Larhemouchi Zouhair</p>
