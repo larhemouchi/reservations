@@ -29,10 +29,16 @@
 			{{csrf_field()}}
 			{{method_field('DELETE')}}	
 		<a href="{{route('shows',$show->slug)}}" class="btn btn-primary">Afficher</a>
+
+		@if( Auth::check() )
+			@if( Auth::user()->role_id == 1 )
 			<a href="{{url('shows/'.$show->id.'/edit')}}" class="btn btn-success">Modifier</a>
 
 
 			<input type="submit" class="btn btn-danger" value="Supprimer"> 
+			@endif
+		@endif
+
           </form></center>
         </p>
       </div>

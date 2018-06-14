@@ -1,16 +1,4 @@
-<?php
-
-namespace App\Policies;
-use App\Representation_user;
-use App\User;
-use App\Representation;
-use Illuminate\Auth\Access\HandlesAuthorization;
-
-class RepresentationPolicy
-{
-    use HandlesAuthorization;
-
-    public function before($user,$ability){
+public function before($user,$ability){
         if($user->role_id==1){  // si le user est un admin le code s'arrete ici
                                  // et n'execute pas le code en bas
               return true;       //$ability == donner tous les droit au admin
@@ -27,7 +15,7 @@ class RepresentationPolicy
      * @param  \App\Representation_user  $representationUser
      * @return mixed
      */
-    public function view(User $user, Representation $representation,Representation_user $representation_user)
+    public function view(User $user, Representation_user $representation_user)
     {
     return true;
     }
@@ -50,9 +38,9 @@ class RepresentationPolicy
      * @param  \App\Representation_user  $representationUser
      * @return mixed
      */
-    public function update(User $user, Representation $representation,Representation_user $representation_user)
+    public function update(User $user, Representation_user $representation_user)
     {
-      return $user->id === $representation_user->representation->user_id; 
+      return $user->id === $representation_user->user_id; 
     }
 
     /**
@@ -62,8 +50,7 @@ class RepresentationPolicy
      * @param  \App\Representation_user  $representationUser
      * @return mixed
      */
-    public function delete(User $user, Representation $representation, Representation_user $representation_user)
+    public function delete(User $user, Representation_user $representation_user)
     {
-       return $user->id === $representation_user->representation->user_id; 
+        return $user->id === $representation_user->user_id; 
     }
-}

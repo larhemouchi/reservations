@@ -6,9 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 class Representation_user extends Model
 {
+
+    public $table = "representation_user";
+    
     //use SoftDeletes;
 
-    //protected $dates=['deleted_at'];
+    protected $fillable = [
+
+    	'representation_id' , 'user_id', 'places'
+    ];
+
+   protected $dates=['deleted_at'];
 
     public function user(){
 

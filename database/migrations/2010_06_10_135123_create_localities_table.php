@@ -18,6 +18,7 @@ class CreateLocalitiesTable extends Migration
             $table->string('locality');
             $table->string('postal_code');
             $table->timestamps();
+            $table->datetime('deleted_at')->nullable();
         });
     }
 

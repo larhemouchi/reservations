@@ -4,14 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-class Artistetype extends Model
+class Artiste_type extends Model
 {
-    //
-    /*
+
+    public $table = "artiste_type";
+  
        use SoftDeletes;
 
     protected $dates=['deleted_at'];
-    */
+    
 
     public function shows(){
      

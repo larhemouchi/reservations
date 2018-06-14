@@ -17,7 +17,7 @@ class Artiste_typeController extends Controller
    public function index(){
 
     $listeartiste_type=Artiste_type::all();
-    return view('artiste_type.index',['artiste_types'=> $listeartiste_type]);
+    return view('artiste_type.index',['artiste_type'=> $listeartiste_type]);
 
    }
 //afficher le formulaire de creation d'artist
@@ -35,7 +35,7 @@ return view('artiste_type.create');
 
     $artiste_type->save();
 
-    return redirect('artiste_types');
+    return redirect('artiste_type');
 
    }
 //pour recuperer un artiste puis le mettre dans le formulaire
@@ -56,7 +56,7 @@ return view('artiste_type.create');
             $artiste_type->type_id=$request->input('type_id'); 
 
             $artiste_type->save();
-            return redirect('artiste_types');
+            return redirect('artiste_type');
 
    }
 //pour supprimer un artist
@@ -66,7 +66,7 @@ return view('artiste_type.create');
 
       $artiste_type->delete();
       
-      return redirect('artiste_types');
+      return redirect('artiste_type');
 
 
 

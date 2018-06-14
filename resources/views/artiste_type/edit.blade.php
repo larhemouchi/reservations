@@ -10,7 +10,7 @@
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
 			
-     <form action="{{url('artiste_types/'.$artiste_type->id)}}" method="post">
+     <form action="{{url('artiste_type/'.$artiste_type->id)}}" method="post">
      	<input type="hidden" name="_method" value="PUT">
 
 

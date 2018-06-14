@@ -2135,12 +2135,13 @@ table td[class*=col-],table th[class*=col-] {
  }
 }
 fieldset,legend {
- padding:0;
- border:0
+ padding:1px;
+ border:0;
 }
 fieldset {
- margin:0;
- min-width:0
+ margin:-23px;
+ min-width:0;
+ padding-top: 61px;
 }
 legend {
  display:block;

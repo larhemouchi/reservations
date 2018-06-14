@@ -20,7 +20,7 @@ class Artiste_type_showController extends Controller
    public function index(){
 
    	$liste_artiste_type_show=Artiste_type_show::all();
-   	return view('artiste_type_show.index',['artiste_type_shows'=> $liste_artiste_type_show]);
+   	return view('artiste_type_show.index',['artiste_type_show'=> $liste_artiste_type_show]);
 
    }
 //afficher le formulaire de creation d'artist
@@ -38,7 +38,7 @@ return view('artiste_type_show.create');
 
     $artiste_type_show->save();
 
-    return redirect('artiste_type_shows');
+    return redirect('artiste_type_show');
 
    }
 //pour recuperer un artiste puis le mettre dans le formulaire
@@ -59,7 +59,7 @@ return view('artiste_type_show.create');
     $artiste_type_show->show_id=$request->input('show_id');
 
             $artiste_type_show->save();
-            return redirect('artiste_type_shows');
+            return redirect('artiste_type_show');
 
    }
 //pour supprimer un artist
@@ -69,7 +69,7 @@ return view('artiste_type_show.create');
 
       $artiste_type_show->delete();
       
-      return redirect('artiste_type_shows');
+      return redirect('artiste_type_show');
 
 
 

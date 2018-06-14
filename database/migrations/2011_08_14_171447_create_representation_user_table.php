@@ -30,6 +30,7 @@ class CreateRepresentationUserTable extends Migration
             $table->integer('places');
 
             $table->timestamps();
+            $table->datetime('deleted_at')->nullable();
         });
     }
 

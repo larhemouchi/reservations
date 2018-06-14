@@ -30,6 +30,8 @@ class CreateShowsTable extends Migration
             
             $table->float('price')->nullable();
             $table->timestamps();
+            $table->datetime('deleted_at')->nullable();
+              
         });
     }
 

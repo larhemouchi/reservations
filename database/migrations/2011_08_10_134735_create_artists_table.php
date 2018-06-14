@@ -18,6 +18,7 @@ class CreateArtistsTable extends Migration
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
             $table->timestamps();
+            $table->datetime('deleted_at')->nullable();
         });
     }
 

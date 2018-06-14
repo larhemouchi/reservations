@@ -23,6 +23,7 @@ class CreateLocationsTable extends Migration
             $table->string('website')->nullable();
             $table->string('phone')->nullable();
             $table->timestamps();
+            $table->datetime('deleted_at')->nullable();
         });
     }
 

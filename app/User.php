@@ -7,11 +7,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    /*
-     use SoftDeletes;
+    
+    use SoftDeletes;
 
-    protected $dates=['deleted_at'];
-    */
+    protected $dates=['deleted_at']; 
+    
     use Notifiable;
 
     /**

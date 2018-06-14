@@ -8,7 +8,7 @@
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
 			
-     <form action="{{url('artiste_type_shows')}}" method="post">
+     <form action="{{url('artiste_type_show')}}" method="post">
    {{csrf_field()}}
 
      	<div class="form-group @if($errors->get('artiste_type_id'))has-error @endif">

@@ -24,7 +24,7 @@ class typeRequest extends FormRequest
     public function rules()
     {
         return [
-         'type'=>'required|min:3|max:200',
+         'type'=>'required|min:3|max:200|unique:listetype',
        
             
         ];

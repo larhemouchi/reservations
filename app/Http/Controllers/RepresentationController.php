@@ -88,6 +88,17 @@ return redirect('representations');
             return redirect('representations');
 
    }
+ /*public function afficher($id)
+    {
+        $show = Show::where('id', $id)->first();
+        return view('show.afficher', ['show' => $show]);
+    }*/
+
+    public function afficher($id){
+    $representation = Representation::where('id', $id)->first();
+        return view('representation.afficher', ['representation' => $representation]);
+    }
+
 //pour supprimer un artist
    public function destroy(Request $request,$id){
      

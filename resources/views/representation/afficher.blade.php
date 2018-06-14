@@ -12,10 +12,10 @@
 
 	<div class="row">
 		<div class="col-sm-3">
-			<h2 align="center"><strong>{{$show->title}}</strong></h2>
+			<h2 align="center"><strong>{{$representation->show->title}}</strong></h2>
             <a href="#title">
 
-			<img src="{{asset($show->poster_url)}}" alt="-" width="380" height="480" class="pb-15">
+			<img src="{{asset($representation->show->poster_url)}}" alt="-" width="380" height="480" class="pb-15">
             </a>
 		</div>
 		<div class="col-sm-1">
@@ -26,7 +26,7 @@
 				</p><p>Cydric Ruth , Zouhair Larhemouchi, Baptiste Isaia, Philippe dupont, Renaud Riga &nbsp; </p>
 
 
-				<p> <strong>{{$show->title}}</strong>, autrement dit un montage 
+				<p> <strong>{{$representation->show->title}}</strong>, autrement dit un montage 
 				d’extraits de grosses productions issus du cinéma américain. Le Collectif Mensuel en assure 
 				les dialogues, le doublage, la musique et les bruitages sous nos yeux fascinés. Face à l
 				a décision du gouvernement qui souhaite taxer les très hauts revenus, le 
@@ -68,18 +68,16 @@
 					</th>
 					<th width="20%">
 
-
-
 					</th>
 				</tr>		
 
-				@foreach($show->representations as $rep)
+
 
 
 
 @php
 
-$dt = new Carbon\Carbon( $rep->when );
+$dt = new Carbon\Carbon( $representation->when );
 
 $date = $dt->format('l jS \\of F Y ');
 $time = $dt->format('H:i'); 
@@ -95,7 +93,7 @@ $time = $dt->format('H:i');
 							{{ $time }}
 						</td>
 						<td>
-							{{$show->price}} $
+							{{$representation->price}} $
 						</td>
 						<td class="hidden-xs">
 							
@@ -103,7 +101,10 @@ $time = $dt->format('H:i');
 						<td class="xs-pull-left">
 						<!-- <div class="pull-right btn btn-sm btn-danger mb-0">Complet</div>-->
 							
-     <form action="{{url('representation_user/'.$rep->id.'/reserver')}}" method="post">
+
+
+
+     <form action="{{url('representation_user/representation/'.$representation->id.'/reserver')}}" method="post">
    {{csrf_field()}}
 
 
@@ -129,9 +130,11 @@ $time = $dt->format('H:i');
 
 
 
+
+
+
 						</td>
 					</tr>
-				@endforeach
 
 
 <!--

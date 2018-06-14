@@ -37,10 +37,19 @@
 			{{csrf_field()}}
 			{{method_field('DELETE')}}	
 			<a href="" class="btn btn-primary">Afficher  </a>
+
+			
+			@if( Auth::check() )
+			@if( Auth::user()->role_id == 1 )
+
 			<a href="{{url('roles/'.$role->id.'/edit')}}" class="btn btn-success">Modifier  </a>
 
 
 			<button type="submit" class="btn btn-danger">Supprimer  </a>
+			
+			@endif
+		@endif
+			
           </form>
 		</td>
 	</tr>

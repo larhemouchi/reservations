@@ -10,6 +10,8 @@ use App\Representation_user;
 
 use App\Http\Requests\representation_userRequest;
 
+use App\Representation;
+
 class Representation_userController extends Controller
 {
 
@@ -26,10 +28,10 @@ class Representation_userController extends Controller
       $listerepresentation_user = Representation_user::all();
      } else{
       
-$listerepresentation_user=Auth::user()->representation_users;
+$listerepresentation_user=Auth::user()->representation_user;
 
 }
-   	return view('representation_user.index',['representation_users'=> $listerepresentation_user]);
+   	return view('representation_user.index',['representation_user'=> $listerepresentation_user]);
 
    }
 //afficher le formulaire de creation d'artist
@@ -37,20 +39,39 @@ $listerepresentation_user=Auth::user()->representation_users;
 return view('representation_user.create');
 
    }
-//enregistrer un artist
-   public function store(representation_userRequest $request){
+/*
+  public function reserver(representation_userRequest $request){
 
-   	$representation_user=new Representation_user();
+    $representation_user=new Representation_user();
 
     $representation_user->representation_id=$request->input('representation_id');
     $representation_user->user_id=Auth::user()->id;
       $representation_user->places=$request->input('places');
-
-   
-      
     $representation_user->save();
 
-    return redirect('representation_users');
+    return redirect('representation_user');
+
+
+   }*/
+
+//enregistrer un artist
+   public function store(Request $request, $var){
+
+
+
+      $rep = Representation::find($var);
+
+      $rep_user = Representation_user::create(['representation_id' => $rep->id,
+        'user_id' => Auth::id(),
+        'places' => $request->places
+        ]);
+
+      return 'vous avez reserver'. $request->places .' place dans se repesentation ='. $rep->show->title;
+
+
+
+
+
 
    }
 //pour recuperer un artiste puis le mettre dans le formulaire
@@ -76,14 +97,11 @@ return view('representation_user.create');
 		
 
             $representation_user->save();
-            return redirect('representation_users');
+            return redirect('representation_user');
 
    }
 
-   public function afficher($id){
-      $representation_user =  Representation_user::where('id',$id)->first();
-      return view('representation_user.afficher',['representation_user'=> $representation_user]);
-    }
+   
 //pour supprimer un artist
    public function destroy(Request $request,$id){
      
@@ -91,7 +109,7 @@ return view('representation_user.create');
 
       $representation_user->delete();
       
-      return redirect('representation_users');
+      return redirect('representation_user');
 
 }
 }

@@ -47,6 +47,11 @@
 
 			<td>
 			<a href="" class="btn btn-primary" style="float: left">Afficher</a></td>
+
+			
+			@if( Auth::check() )
+			@if( Auth::user()->role_id == 1 )
+
 			<td><a href="{{url('users/'.$user->id.'/edit')}}" class="btn btn-success" >Modifier</a></td>
 	
 	<td><form action="{{url('users/'.$user->id)}}" method="post" 
@@ -58,7 +63,11 @@
 		<button type="submit" class="btn btn-danger" >Supprimer</button>
 	
           </form>
-      </td>
+      </td>	
+			
+			@endif
+		@endif
+		
 
          
 </td>

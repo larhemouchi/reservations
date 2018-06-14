@@ -17,6 +17,7 @@ class CreateTypesTable extends Migration
             $table->increments('id');
             $table->string('type');
             $table->timestamps();
+            $table->datetime('deleted_at')->nullable();
         });
     }
 

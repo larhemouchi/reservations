@@ -29,6 +29,7 @@ class CreateArtisteTypeTable extends Migration
               ->onDelete('cascade'); 
 
             $table->timestamps();
+            $table->datetime('deleted_at')->nullable();
         });
     }
 

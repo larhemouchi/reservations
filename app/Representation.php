@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Representation extends Model
 {
 
+use SoftDeletes;
+
+    protected $dates=['deleted_at']; 
+    
   protected $fillable = [
         'id',
         'show_id',

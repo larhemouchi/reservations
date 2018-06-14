@@ -17,6 +17,7 @@ class CreateRolesTable extends Migration
             $table->increments('id');
             $table->string('role');
             $table->timestamps();
+            $table->datetime('deleted_at')->nullable();
         });
     }
 

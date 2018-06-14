@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
             
-     <form action="{{url('artiste_types')}}" method="post">
+     <form action="{{url('artiste_type')}}" method="post">
    {{csrf_field()}}
 
         <div class="form-group @if($errors->get('artist_id'))has-error @endif">

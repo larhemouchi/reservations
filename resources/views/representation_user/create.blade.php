@@ -12,7 +12,7 @@
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
 			
-     <form action="{{url('representation_users')}}" method="post">
+     <form action="{{url('representation_user')}}" method="post">
    {{csrf_field()}}
 
      	<div class="form-group @if($errors->get('representation_id'))has-error @endif">

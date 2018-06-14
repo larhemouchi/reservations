@@ -29,6 +29,7 @@ class CreateRepresentationsTable extends Migration
               ->on('locations')
               ->onDelete('cascade'); 
             $table->timestamps();
+            $table->datetime('deleted_at')->nullable();
         });
     }
 

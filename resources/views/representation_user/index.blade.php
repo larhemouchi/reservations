@@ -10,7 +10,7 @@
 	<div class="col-md-12">
 		<h1>La liste des representation users</h1>
 		<div class="pull-left">
-			<a href="{{url('representation_users/create')}}" class="btn btn-warning"> Créer representation user </a>
+			<a href="{{url('representation_user/create')}}" class="btn btn-warning"> Créer representation user </a>
 		
 		</div>	
 
@@ -24,22 +24,30 @@
 				</tr>
 		</head>
 <body>
-	@foreach($representation_users as $representation_user)
+	@foreach($representation_user as $representation_user)
 	<tr>
 		<td>{{$representation_user->representation_id}}</br>{{$representation_user->user->firstname}}</td>
 		
 		<td>{{$representation_user->places}}</td>
 		<td>
 			
-			<form action="{{url('representation_users/'.$representation_user->id)}}" method="post"
+			<form action="{{url('representation_user/'.$representation_user->id)}}" method="post"
 				onsubmit="return confirm('Etes vous sur de supprimer ?');">
 			{{csrf_field()}}
 			{{method_field('DELETE')}}	
 			<a href="" class="btn btn-primary">Afficher  </a>
-			<a href="{{url('representation_users/'.$representation_user->id.'/edit')}}" class="btn btn-success">Modifier  </a>
+			
+			@if( Auth::check() )
+			@if( Auth::user()->role_id == 1 )
+
+			<a href="{{url('representation_user/'.$representation_user->id.'/edit')}}" class="btn btn-success">Modifier  </a>
 
 
 			<button type="submit" class="btn btn-danger">Supprimer  </a>
+			
+			@endif
+		@endif
+			
           </form>
 		</td>
 	</tr>
