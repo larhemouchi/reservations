@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 class DashboardController extends Controller
 {
     /**
@@ -24,6 +24,9 @@ class DashboardController extends Controller
 
     public function index()
     {
+        if(  Auth::user()->role_id != 1){
+            return redirect()->route('home');
+        }
         return view('back.index');
     }
 

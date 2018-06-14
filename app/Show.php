@@ -30,7 +30,7 @@ class Show extends Model
 
     }
 
-	public function representation(){
+	public function representations(){
      
      return $this->hasMany('App\Representation');
 

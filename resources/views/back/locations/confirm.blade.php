@@ -202,18 +202,7 @@ $( document ).ready(function() {
     id_selector.attr('disabled', true);
 
 
-/*            { data: 'Name'},
-            //Designation 
-            { data: 'Info'},
-            { data: 'Address'},
-            //localityId
-            { data: 'City'},
-            { data: 'Postcode'},
-            //website
-            { data: 'Email'},
-            { data: 'Telephone'},
-            { data: 'VenueId',*/
-   // debugger;
+
     var phone_parent = id_selector.parent().prev();
 
     var phone = phone_parent.text();
@@ -299,18 +288,6 @@ $('#table').on('click','.btn-delete', function(e){
     id_selector.attr('disabled', true);
 
 
-/*            { data: 'Name'},
-            //Designation 
-            { data: 'Info'},
-            { data: 'Address'},
-            //localityId
-            { data: 'City'},
-            { data: 'Postcode'},
-            //website
-            { data: 'Email'},
-            { data: 'Telephone'},
-            { data: 'VenueId',*/
-   // debugger;
 
     axios.delete('/locations-delete/'+id,{
         //csrf token

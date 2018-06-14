@@ -13,17 +13,17 @@
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              {!! Html::image('storage/images/profils/smar.jpg','User Image', ['class' => 'user-image'] ) !!}
+              {!! Html::image('images/profils/avatar04.png','User Image', ['class' => 'user-image'] ) !!}
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Larhemouchi Zouhair</span>
+              <span class="hidden-xs">{{ Auth::user()->firstname  }} - {{ Auth::user()->lastname  }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                {!! Html::image('storage/images/profils/smar.jpg','User Image', ['class' => 'img-circle'] ) !!}
+                {!! Html::image('images/profils/avatar04.png','User Image', ['class' => 'img-circle'] ) !!}
 
                 <p>
-                  Larhemouchi Zouhair - Admin
+                  {{ Auth::user()->login  }} - {{ Auth::user()->role->role  }}
                   <small>...</small>
                 </p>
               </li>

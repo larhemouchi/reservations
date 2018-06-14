@@ -13,11 +13,13 @@ use App\Location;
 
 use App\Http\Requests\representationRequest;
 
+use Carbon\Carbon;
+
 class RepresentationController extends Controller
 {
         public function __construct(){
 
-          //$this->middleware('auth');
+        $this->middleware('auth');
         }
 
         //public function conf(Show $show){
@@ -39,7 +41,10 @@ class RepresentationController extends Controller
    }
 //afficher le formulaire de creation d'artist
    public function create(){
-return view('representation.create');
+
+    $shows = Show::pluck('title', 'id')->toArray();// hadi bach nemchi njib men table show kol 
+    $locations = Location::pluck('slug', 'id')->toArray();
+return view('representation.create',compact('shows','locations'));
 
    }
 //enregistrer un artist
@@ -62,9 +67,10 @@ return view('representation.create');
 //pour recuperer un artiste puis le mettre dans le formulaire
 
     public function edit($id){
-     
+     $shows = Show::pluck('title', 'id')->toArray();// hadi bach nemchi njib men table show kol 
+    $locations = Location::pluck('slug', 'id')->toArray();
      $representation =  Representation::find($id);
-     return view('representation.edit',['representation'=> $representation]);
+     return view('representation.edit',compact('shows','locations', 'representation'));
     
 return redirect('representations');
    }

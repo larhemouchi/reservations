@@ -6,11 +6,6 @@
 
 <body>
 <div id="waitingDiv"></div>
-<!--[if lt IE 8]>
-<p class="browserupgrade">
-	#oldbrowser</p>
-<![endif]-->
-
 
 
 <section class="container">
@@ -65,20 +60,42 @@
 					<th width="20%">
 
 					</th>
-				</tr>			<tr>
+				</tr>		
+
+				@foreach($show->representations as $rep)
+
+
+
+@php
+
+$dt = new Carbon\Carbon( $rep->when );
+$date = $dt->format('l jS \\of F Y ');
+$time = $dt->format('h:i:s A'); 
+@endphp
+
+
+<tr>
 						<td>
-							<a href="">Le vendredi 1er juin 2018</a>
+
+							<a href="">{{ $date }}</a>
 						</td>
 						<td>
-							19:00
+							{{ $time }}
 						</td>
 						<td class="hidden-xs">
 							
 						</td>
 						<td class="xs-pull-left">
-							<div class="pull-right btn btn-sm btn-danger mb-0">Complet</div>
+						<!-- <div class="pull-right btn btn-sm btn-danger mb-0">Complet</div>-->
+							<a href="{{url('shows/'.$show->id.'/edit')}}" class="btn btn-danger">Reserver</a>
 						</td>
-					</tr>			<tr>
+					</tr>
+				@endforeach
+
+
+<!--
+
+								<tr>
 						<td>
 							<a href="?q=159C2526-A3C2-2316-BBBD-343D0A07E819&amp;module=QUANTITY">Le jeudi 31 mai 2018</a>
 						</td>
@@ -130,7 +147,10 @@
 						<td class="xs-pull-left">
 							<div class="pull-right btn btn-sm btn-danger mb-0">Complet</div>
 						</td>
-					</tr></tbody></table></div>	
+					</tr>
+-->
+
+					</tbody></table></div>	
 
 	<div class="text-left">
 		<a href="{{url('shows')}}" class="btn btn-primary btn-warning">Retour</a>

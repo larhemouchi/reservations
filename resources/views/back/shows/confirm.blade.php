@@ -128,8 +128,19 @@ window.exist = JSON.parse('{{ $exist }}');
             { data: 'EventId'},
 
              { data: 'MainImageUrl'},
+             { data: 'Name',render: function ( data, type, row ) {
+
+                    return data.toString().toLowerCase()
+                        .replace(/\s+/g, '-')           // Replace spaces with -
+                        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+                        .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+                        .replace(/^-+/, '')             // Trim - from start of text
+                        .replace(/-+$/, '');            // Trim - from end of text
+
+
+                 }
+             },
             { data: 'Name'},
-            { data: 'Description'},
             //"VenueId": 85,//Location Id
             { data: 'VenueId'},
             //Mochkila khra bach njabdo limage khasa ndakhlo l array nkhaliwha mn ba3d
@@ -148,7 +159,7 @@ window.exist = JSON.parse('{{ $exist }}');
 
                 }
 
-            },
+            }
         ]
     });
     /**/
@@ -169,23 +180,34 @@ $( document ).ready(function() {
 
     var id_selector = $(this);
 
-    id_selector.attr('disabled', true);
+    id_selector.attr('disabled', true);// hadi bach matkhalikchi t cliker 2 fois 
 
 
-/*            { data: 'Name'},
-            //Designation 
-            { data: 'Info'},
-            { data: 'Address'},
-            //localityId
-            { data: 'City'},
-            { data: 'Postcode'},
-            //website
-            { data: 'Email'},
-            { data: 'Telephone'},
-            { data: 'VenueId',*/
+/*  
+
+
+
+
+
+
+*/
    // debugger;
 
-    var slug_parent = id_selector.parent().prev();
+   var price_parent =  id_selector.prev();
+
+    var price = price_parent.text();
+    var location_id_parent = price_parent.prev();
+
+    var location_id = location_id_parent.text();
+
+    var title_parent = location_id_parent.prev();
+     
+    var title = title_parent.text();
+
+
+
+
+    var slug_parent = title_parent.prev();
 
     var slug = slug_parent.text();
 
@@ -193,32 +215,20 @@ $( document ).ready(function() {
 
     var poster_url = poster_url_parent.text();
 
-    var location_id_parent = poster_url_parent.prev();
 
-    var location_id = location_id_parent.text();
- 
-    var price_parent = location_id_parent.prev();
-
-    var price = price_parent.text();
-
-    var title_parent = price_parent.prev();
-     
-    var title = title_parent.text();
-
-
-       axios.post('/shows-post/'+id,{
+       axios.post('shows-post/'+id,{
         //csrf token
         headers: {
 
 
            'X-CSRF-TOKEN': $('#csrf-token').attr('content')
                             },
-        id: id,
+
         slug: slug,
         location_id:location_id,
         title:title,
         poster_url:poster_url,
-        price: price,
+        price: price
       
         
 

@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['admin']], function () {
 
-Route::get('/test-fill/{show}', 'ShowController@fillRep')->name('test.fill');
+Route::get('/test-api/', 'ShowController@api');
 
 Route::get('/dashboard	', 'DashboardController@index')->name('dashboard.index');
 

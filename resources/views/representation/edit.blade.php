@@ -17,8 +17,8 @@
    {{csrf_field()}}
 
      	<div class="form-group">
-     		<label for="">Show id :</label>		
-     	<input type="text" name="show_id" class="form-control" value="{{$representation->show_id}}">
+     		<label for="">Show id :</label>	
+            {!! Form::select('show_id', $shows , $representation->show_id ,['class' => 'form-control']) !!}	
      @if($errors->get('show_id'))
             @foreach($errors->get('show_id') as $message)
 
@@ -51,8 +51,8 @@
             @endif
         </div>
             <div class="form-group">
-            <label for="">Location id :</label>       
-        <input type="text" name="location_id" class="form-control" value="{{$representation->location_id}}">
+            <label for="">Location id :</label>  
+            {!! Form::select('location_id', $locations , $representation->location_id ,['class' => 'form-control']) !!}     
      @if($errors->get('location_id'))
             @foreach($errors->get('location_id') as $message)
 
