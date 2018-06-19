@@ -10,7 +10,7 @@
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
 			
-     <form action="{{url('localities/'.$locality->id)}}" method="post">
+     <form action="{{url('locality/'.$locality->id)}}" method="post">
      	<input type="hidden" name="_method" value="PUT">
 
 
@@ -46,7 +46,7 @@
      				
      	<input type="submit" value="Modifier" class="form-control btn btn-success">
      </div>
-<a href="{{url('localities')}}" class="form-control btn btn-primary">Retour</a>
+<a href="{{url('locality')}}" class="form-control btn btn-primary">Retour</a>
      </form>
 
 

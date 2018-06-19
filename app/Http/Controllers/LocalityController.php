@@ -17,8 +17,8 @@ public function __construct(){
      //pour lister les artists
    public function index(){
 
-   	$listelocalitie=Locality::all();
-   	return view('locality.index',['localities'=> $listelocalitie]);
+   	$listelocality=Locality::all();
+   	return view('locality.index',['locality'=> $listelocality]);
 
    }
 //afficher le formulaire de creation d'artist
@@ -37,7 +37,7 @@ return view('locality.create');
 
     $locality->save();
 
-    return redirect('localitie');
+    return redirect('locality');
 
    }
 //pour recuperer un artiste puis le mettre dans le formulaire
@@ -59,7 +59,7 @@ return view('locality.create');
 		
 
             $locality->save();
-            return redirect('localities');
+            return redirect('locality');
 
    }
 //pour supprimer un artist
@@ -69,7 +69,7 @@ return view('locality.create');
 
       $locality->delete();
       
-       return redirect('localities');
+       return redirect('locality');
 
 
    }

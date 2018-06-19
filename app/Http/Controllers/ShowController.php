@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 use App\Representation;
 use Illuminate\Http\Request;
 use App\Show;
+ use   App\Category;
+
 use App\Location;
 use App\Locality;
 use Illuminate\Http\uploadedFile;
@@ -207,7 +209,8 @@ class ShowController extends Controller
     //afficher le formulaire de creation d'artist
     public function create()
     {
-        return view('show.create');
+        $category = Category::pluck('name_category', 'id' )->toArray();
+        return view('show.create', compact('category'));
     }
     //enregistrer un artist
     public function store(showRequest $request)

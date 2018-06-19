@@ -62,6 +62,9 @@
 					<th width="25%">
 						Prix
 					</th>
+                   <th width="25%">
+						Bookabable
+					</th>
 
 					<th class="hidden-xs" width="15%">
 						&nbsp;
@@ -97,6 +100,11 @@ $time = $dt->format('H:i');
 						<td>
 							{{$show->price}} $
 						</td>
+						<td>
+                  <div class="form-group">
+                    
+        <input type="submit" value="Bookable" class="form-control btn btn-primary">
+     </div> 						</td>
 						<td class="hidden-xs">
 							
 						</td>
@@ -233,8 +241,23 @@ $time = $dt->format('H:i');
 </div>
 
 
+<script>
+$('#table').on('click','.btn-boockable', function(e){
+    e.preventDefault();
+    // btn-confirm id
+    var id= $(this).attr('boockable');
 
 
+    }).catch(function( error ){
+        //if error
+        alert('error');
+        console.log( error);
+        id_selector.attr('disabled', false);
+
+    });
+
+ });
+</script>
 
 
 </body>

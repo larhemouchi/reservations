@@ -6,7 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Locality extends Model
 {
+
+	public $table = "locality";
+
 use SoftDeletes;
+
+
 
     protected $dates=['deleted_at'];
     

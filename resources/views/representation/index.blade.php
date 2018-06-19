@@ -29,7 +29,7 @@
 	<tr>
 		<td>{{$representation->show->title}}</td>
 		<td>{{$representation->when}}</td>
-		<td>{{$representation->location->locality->locality}}</td>
+		<td>{{ $representation->location->id }}</td>
 				<td>
 			
 			<form action="{{url('representations/'.$representation->id)}}" method="post"
@@ -39,17 +39,11 @@
 			<a href="{{route('representations',$representation->id)}}" class="btn btn-primary">Afficher  </a>
 
 			
-			@if( Auth::check() )
-			@if( Auth::user()->role_id == 1 )
-
-				<a href="{{url('representations/'.$representation->id.'/edit')}}" class="btn btn-success">Modifier  </a>
+			
+		<a href="{{url('representations/'.$representation->id.'/edit')}}" class="btn btn-success">Modifier  </a>
 
 
 			<button type="submit" class="btn btn-danger">Supprimer  </a>
-			
-			@endif
-		@endif
-		
           </form>
 		</td>
 	</tr>

@@ -33,7 +33,7 @@ Route::get('/shows-conf', 'ShowController@conf')->name('shows.conf');
 //Route::delete('/shows-delete', 'ShowController@delete')->name('shows.delete');
 Route::post('/shows-post/{id}', 'ShowController@post')->name('shows.post');
 Route::delete('/shows-delete/{id}', 'ShowController@delete')->name('shows.delete');
-
+Route::get('/representations-conf', 'ShowController@fetch')->name('representations.conf');
 Route::get('/shows_dashboard', 'ShowController@fetch')->name('shows.list_repre_conf');
 Route::get('/locations-conf', 'LocationController@conf')->name('locations.conf');
 Route::post('/locations-post/{id}', 'LocationController@post')->name('locations.post');
@@ -41,7 +41,7 @@ Route::delete('/locations-delete/{id}', 'LocationController@delete')->name('loca
 Route::get('/representations-conf/{show}', 'RepresentationController@conf')->name('representations.conf');
 
 /**************************/
-
+Route::get('representations', 'RepresentationController@index');
 Route::get('representations/create', 'RepresentationController@create');
 Route::post('representations', 'RepresentationController@store');
 Route::get('representations/{id}/edit', 'RepresentationController@edit');
@@ -80,11 +80,11 @@ Route::put('artiste_type/{id}', 'Artiste_typeController@update');
 Route::delete('artiste_type/{id}', 'Artiste_typeController@destroy');
 
 /*******************************/
-Route::get('localities/create', 'LocalitieController@create');
-Route::post('localities', 'LocalitieController@store');
-Route::get('localities/{id}/edit', 'LocalitieController@edit');
-Route::put('localities/{id}', 'LocalitieController@update');
-Route::delete('localities/{id}', 'LocalitieController@destroy');
+Route::get('locality/create', 'LocalityController@create');
+Route::post('locality', 'LocalityController@store');
+Route::get('locality/{id}/edit', 'LocalityController@edit');
+Route::put('locality/{id}', 'LocalityController@update');
+Route::delete('locality/{id}', 'LocalityController@destroy');
 
 /**********************************************/
 Route::get('locations/create', 'LocationController@create');
@@ -93,6 +93,14 @@ Route::get('locations/{id}/edit', 'LocationController@edit');
 Route::put('locations/{id}', 'LocationController@update');
 Route::delete('locations/{id}', 'LocationController@destroy');
 /************************************************/
+
+Route::get('category/create', 'CategoryController@create');
+Route::post('category', 'CategoryController@store');
+Route::get('category/{id}/edit', 'CategoryController@edit');
+Route::put('category/{id}', 'CategoryController@update');
+Route::delete('category/{id}', 'CategoryController@destroy');
+
+/************************************/
 
 Route::get('representation_user/create', 'Representation_userController@create');
 Route::get('representation_user/reserver', 'Representation_userController@reserver');
@@ -166,15 +174,15 @@ Route::get('artiste_type', 'Artiste_typeController@index');
 
 
 //les routes de localities
-Route::get('localities', 'LocalitieController@index');
+Route::get('locality', 'LocalityController@index');
 
 //Route::resource('localities', 'LocalityController');
 
 //les routes de localions
 Route::get('locations', 'LocationController@index');
 
-
-
+//les routes de category
+Route::get('category', 'CategoryController@index');
 //les routes de representation_user
 
 Route::get('representation_user', 'Representation_userController@index');
@@ -191,7 +199,7 @@ Route::get('representations/{id}', 'RepresentationController@afficher')->name('r
 //les routes de roles
 
 
-//les routes de show
+//les routes de show 
 Route::get('shows', 'ShowController@index');
 
 Route::get('shows/{title}', 'ShowController@afficher')->name('shows');
@@ -200,5 +208,4 @@ Route::get('shows/{title}', 'ShowController@afficher')->name('shows');
 Route::resource('listePieces', 'ListePiecesController');
 Route::get('/all.json',[
 ]);
-
 

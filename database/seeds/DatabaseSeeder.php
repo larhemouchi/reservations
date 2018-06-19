@@ -108,30 +108,63 @@ DB::table('locations')->insert([
 
             );
 
-DB::table('shows')->insert(
+DB::table('category')->insert(
+          [
+            'id' => 1,
+            'name_category' => 'Action',
+
+            ]);
+
+             DB::table('category')->insert( [
+            'id' => 2,
+            'name_category' => 'Tragedie',
+            ]);
+             DB::table('category')->insert( [
+            'id' => 3,
+            'name_category' => 'Comedie',
+           ]
+
+           );
+              DB::table('category')->insert( [
+            'id' => 4,
+            'name_category' => 'inconnue',
+           ]
+
+           );
+             /*********************************/
+
+             DB::table('shows')->insert(
           [
             'id' => 1742,
             'slug' => 'Aladdin',
             'title' => 'Aladdin',
             'poster_url'=> 'https://media.londontheatredirect.com/Event/Aladdin/event-list-image_15943.jpg',
             'location_id'=>10,
-            'price'=>95.0 ]);
+            'price'=>95.0 ,
+            'category_id'=>1
+
+            ]);
+
              DB::table('shows')->insert( [
             'id' => 384,
             'slug' => 'The Lion King',
             'title' => 'The Lion King',
             'poster_url'=> 'https://media.londontheatredirect.com/Event/TheLionKing/event-list-image_15037.jpg',
             'location_id'=>9,
-            'price'=>0 ]);
+            'price'=>0 ,
+            'category_id'=>2
+            ]);
              DB::table('shows')->insert( [
             'id' => 13,
             'slug' => 'Phantom of the Opera',
             'title' => 'Phantom of the Opera',
             'poster_url'=> 'https://www.londontheatredirect.com/images/Event/PhantomofTheOpera/Phantom-of-The-Opera-10572.jpg',
             'location_id'=>13,
-            'price'=>0 ]
+            'price'=>0 ,
+            'category_id'=>3 ]
 
            );
+
 
 
 //is just a test

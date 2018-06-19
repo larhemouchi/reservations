@@ -27,8 +27,6 @@ class CreateArtisteTypeShowTable extends Migration
               ->references('id')
               ->on('shows')
               ->onDelete('cascade'); 
-
-
             $table->timestamps();
             $table->datetime('deleted_at')->nullable();
         });

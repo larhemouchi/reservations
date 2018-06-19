@@ -25,9 +25,12 @@ class CreateShowsTable extends Migration
               ->references('id')
               ->on('locations')
               ->onDelete('cascade');
-              //oui safi n9elboh 7it aslan mli sewelt l prof 9ali juste za3ma wach reservable wla la ( bookable wla la)
+             
             $table->boolean('bookable')->default(false);
             
+            $table->integer('category_id')->nullable()->index()->default(4);
+          $table->foreign('category_id')->references('id')->on('category');
+
             $table->float('price')->nullable();
             $table->timestamps();
             $table->datetime('deleted_at')->nullable();

@@ -12,7 +12,7 @@
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
 			
-     <form action="{{url('localities')}}" method="post">
+     <form action="{{url('locality')}}" method="post">
    {{csrf_field()}}
 
      	<div class="form-group @if($errors->get('postal_code'))has-error @endif">
@@ -42,7 +42,6 @@
             @endif
 
      </div>
-
 <div class="form-group">
      				
      	<input type="submit" value="Enregistrer" class="form-control btn btn-primary">

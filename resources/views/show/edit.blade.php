@@ -40,6 +40,17 @@
 
             @endif
         </div>
+
+<div class="form-group">
+
+
+                             
+           <label for="category_id" class="control-label">category_id :</label>
+                                <div class="">
+                                    {!! Form::select('category_id', $category , null ,['class' => 'form-control']) !!}
+                                </div>
+</div>
+        
              <div class="form-group @if($errors->get('poster_url'))has-error @endif">
             <label for="">Poster url :</label>       
         <input type="file" name="poster_url" width="304" height="236" >
